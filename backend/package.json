@@ -1,0 +1,27 @@
+{
+  "name": "youtube-summarizer-backend",
+  "version": "1.0.0",
+  "description": "Backend API for YouTube Video Summarizer with OpenRouter AI",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [
+    "youtube",
+    "summarizer",
+    "openrouter",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "youtube-transcript": "^1.2.1",
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
+  }
+}
