@@ -1,6 +1,6 @@
 # Dependencies
 node_modules/
-package-lock.json
+# package-lock.json - Keeping this for Railway deployment consistency
 yarn.lock
 pnpm-lock.yaml
 
