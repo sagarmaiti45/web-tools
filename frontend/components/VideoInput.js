@@ -5,8 +5,6 @@ import { fetchTranscript, generateSummary } from '../lib/api';
 
 export default function VideoInput({ onSummaryGenerated, onStartLoading, onProgress, onMetadata }) {
   const [videoUrl, setVideoUrl] = useState('');
-  const [title, setTitle] = useState('');
-  const [channel, setChannel] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,11 +39,6 @@ export default function VideoInput({ onSummaryGenerated, onStartLoading, onProgr
       return;
     }
 
-    if (!title.trim()) {
-      setError('Please enter a video title');
-      return;
-    }
-
     setIsLoading(true);
     onStartLoading();
 
@@ -60,10 +53,10 @@ export default function VideoInput({ onSummaryGenerated, onStartLoading, onProgr
 
       console.log('Transcript fetched successfully');
 
-      // Step 2: Set metadata
+      // Step 2: Set metadata (using placeholder values for now)
       const metadata = {
-        title: title.trim(),
-        channel: channel.trim() || 'Unknown Channel',
+        title: `YouTube Video ${videoId}`,
+        channel: 'YouTube Channel',
         videoId,
         duration: transcriptData.data.duration,
         language: transcriptData.data.language,
@@ -122,33 +115,10 @@ export default function VideoInput({ onSummaryGenerated, onStartLoading, onProgr
             type="text"
             value={videoUrl}
             onChange={(e) => setVideoUrl(e.target.value)}
-            placeholder="https://youtube.com/watch?v=..."
+            placeholder="https://youtube.com/watch?v=dQw4w9WgXcQ or dQw4w9WgXcQ"
             style={styles.input}
             disabled={isLoading}
-          />
-        </div>
-
-        <div style={styles.inputGroup}>
-          <label style={styles.label}>Video Title</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter video title"
-            style={styles.input}
-            disabled={isLoading}
-          />
-        </div>
-
-        <div style={styles.inputGroup}>
-          <label style={styles.label}>Channel Name (Optional)</label>
-          <input
-            type="text"
-            value={channel}
-            onChange={(e) => setChannel(e.target.value)}
-            placeholder="Enter channel name"
-            style={styles.input}
-            disabled={isLoading}
+            autoFocus
           />
         </div>
 
